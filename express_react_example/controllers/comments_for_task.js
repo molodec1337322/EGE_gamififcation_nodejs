@@ -10,7 +10,15 @@ const {User} = require("../models/user")
  * @param {JSON} res 
  */
 module.exports.getAllComments = function(req, res){
-    Comments_for_task.findAll()
+    Comments_for_task.findAll({
+        include: [{
+            model: User,
+            as: "User",
+            throught:{
+                attributes: ["nickname"]
+            }
+        }]
+    })
     .then(comments => {
         res.json({
             comments: comments
@@ -22,6 +30,10 @@ module.exports.getAllComments = function(req, res){
             message: "server error"
         })
     })
+}
+
+module.exports.getComment = function(req, res){
+
 }
 
 /**

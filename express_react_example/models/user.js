@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize")
 const db = require("../config/database")
-const {Comments_for_task} = require("./comments_for_task")
+const Comments_for_task = require("./comments_for_task")
 
 const User = db.define("User", {
     id:{
@@ -31,7 +31,7 @@ const User = db.define("User", {
 })
 
 User.associate = (models) => {
-    User.hasMany(models.Comments_for_task, {foreignKey: "id", sourceKey: "user_id"})
+    User.hasMany(models.Comments_for_task, {as: "Comments_for_tasks", foreignKey: "id", sourceKey: "user_id"})
 }
 
 module.exports.User = User
