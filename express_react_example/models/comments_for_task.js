@@ -24,7 +24,8 @@ const Comments_for_task = db.define("Comments_for_task", {
     }
 })
 
-User.hasMany(Comments_for_task, {foreignKey: "id", sourceKey: "user_id"})
-Comments_for_task.belongsTo(User, {foreignKey: "id", sourceKey: "user_id"})
+Comments_for_task.associate = (models) => {
+    Comments_for_task.belongsTo(models.User, {foreignKey: "id", sourceKey: "user_id"})
+}
 
 module.exports.Comments_for_task = Comments_for_task

@@ -30,4 +30,8 @@ const User = db.define("User", {
     }
 })
 
+User.associate = (models) => {
+    User.hasMany(models.Comments_for_task, {foreignKey: "id", sourceKey: "user_id"})
+}
+
 module.exports.User = User
