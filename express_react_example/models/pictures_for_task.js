@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize")
 const db = require("../config/database")
-const Tasks = require("./tasks")
+const Task = require("./task")
 
-const Picture_to_tasks = db.define("Picture_to_tasks", {
+const Picture_for_task = db.define("Picture_for_task", {
     id:{
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -20,8 +20,8 @@ const Picture_to_tasks = db.define("Picture_to_tasks", {
     }
 })
 
-Picture_to_tasks.associate = (models) => {
-    Picture_to_tasks.belongsTo(models.Tasks, {as: "Tasks", foreignKey: "id", sourceKey: "task_id"})
+Picture_for_task.associate = (models) => {
+    Picture_for_task.belongsTo(models.Task, {as: "Task", foreignKey: "id", sourceKey: "task_id"})
 }
 
-module.exports.Picture_to_tasks = Picture_to_tasks
+module.exports.Picture_for_task = Picture_for_task

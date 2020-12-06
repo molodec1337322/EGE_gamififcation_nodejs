@@ -1,9 +1,9 @@
 const Sequelize = require("sequelize")
 const db = require("../config/database")
-const Tasks = require("./tasks")
-const Answers_for_variants = require("./answers_for_variants")
+const Task = require("./task")
+const Answers_for_variant = require("./answers_for_variant")
 
-const Answers_for_tasks = db.define("Answers_for_tasks", {
+const Answers_for_task = db.define("Answers_for_task", {
     id:{
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -33,11 +33,11 @@ const Answers_for_tasks = db.define("Answers_for_tasks", {
     }
 })
 
-Answers_for_tasks.associate = (models) => {
-    Answers_for_tasks.belongsTo(models.Answers_for_variants, {as: "Answers_for_variants", foreignKey: "id", sourceKey: "answer_id"})
+Answers_for_task.associate = (models) => {
+    Answers_for_task.belongsTo(models.Answers_for_variant, {as: "Answers_for_variant", foreignKey: "id", sourceKey: "answer_id"})
 }
-Answers_for_tasks.associate = (models) => {
-    Answers_for_tasks.belongsTo(models.Tasks, {as: "Tasks", foreignKey: "id", sourceKey: "task_id"})
+Answers_for_task.associate = (models) => {
+    Answers_for_task.belongsTo(models.Task, {as: "Task", foreignKey: "id", sourceKey: "task_id"})
 }
 
-module.exports.Answers_for_tasks = Answers_for_tasks
+module.exports.Answers_for_task = Answers_for_task
