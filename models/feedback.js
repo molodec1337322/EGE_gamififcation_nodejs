@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize")
 const db = require("../config/database")
-const Users = require("./users")
+const User = require("./user")
 
 const Feedback = db.define("Feedback", {
     id:{
@@ -21,7 +21,7 @@ const Feedback = db.define("Feedback", {
 })
 
 Feedback.associate = (models) => {
-    Feedback.belongsTo(models.Users, {as: "Users", foreignKey: "id", sourceKey: "user_id"})
+    Feedback.belongsTo(models.User, {as: "User", foreignKey: "id", sourceKey: "user_id"})
 }
 
 module.exports.Feedback = Feedback

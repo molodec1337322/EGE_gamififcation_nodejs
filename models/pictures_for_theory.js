@@ -2,7 +2,7 @@ const Sequelize = require("sequelize")
 const db = require("../config/database")
 const Theory = require("./theory")
 
-const Pictures_to_theory = db.define("Pictures_to_theory", {
+const Pictures_for_theory = db.define("Pictures_for_theory", {
     id:{
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -24,4 +24,4 @@ Theory_topics.associate = (models) => {
     Theory_topics.belongsTo(models.Theory, {as: "Theory", foreignKey: "id", sourceKey: "subject_id"})
 }
 
-module.exports.Pictures_to_theory = Pictures_to_theory
+module.exports.Pictures_for_theory = Pictures_for_theory

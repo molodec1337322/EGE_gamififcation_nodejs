@@ -1,9 +1,9 @@
 const Sequelize = require("sequelize")
 const db = require("../config/database")
 const Theory = require("./theory")
-const Users = require("./users")
+const User = require("./user")
 
-const Theory_comments = db.define("Theory_comments", {
+const Theory_comment = db.define("Theory_comment", {
     id:{
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -25,11 +25,11 @@ const Theory_comments = db.define("Theory_comments", {
     }
 })
 
-Theory_comments.associate = (models) => {
-    Theory_comments.belongsTo(models.Users, {as: "Users", foreignKey: "id", sourceKey: "user_id"})
+Theory_comment.associate = (models) => {
+    Theory_comment.belongsTo(models.User, {as: "User", foreignKey: "id", sourceKey: "user_id"})
 }
-Theory_comments.associate = (models) => {
-    Theory_comments.belongsTo(models.Theory, {as: "Theory", foreignKey: "id", sourceKey: "theory_id"})
+Theory_comment.associate = (models) => {
+    Theory_comment.belongsTo(models.Theory, {as: "Theory", foreignKey: "id", sourceKey: "theory_id"})
 }
 
-module.exports.Theory_comments = Theory_comments
+module.exports.Theory_comment = Theory_comment

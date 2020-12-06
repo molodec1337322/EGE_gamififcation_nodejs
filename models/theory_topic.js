@@ -1,9 +1,9 @@
 const Sequelize = require("sequelize")
 const db = require("../config/database")
-const Subjects = require("./subjects")
+const Subject = require("./subject")
 const Theory = require("./theory")
 
-const Theory_topics = db.define("Theory_topics", {
+const Theory_topic = db.define("Theory_topic", {
     id:{
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -21,11 +21,11 @@ const Theory_topics = db.define("Theory_topics", {
     }
 })
 
-Theory_topics.associate = (models) => {
-    Theory_topics.belongsTo(models.Subjects, {as: "Subjects", foreignKey: "id", sourceKey: "subject_id"})
+Theory_topic.associate = (models) => {
+    Theory_topic.belongsTo(models.Subject, {as: "Subject", foreignKey: "id", sourceKey: "subject_id"})
 }
-Theory_topics.associate = (models) => {
-    Theory_topics.hasMany(models.Theory, {as: "Theory", foreignKey: "id", sourceKey: "topic_id"})
+Theory_topic.associate = (models) => {
+    Theory_topic.hasMany(models.Theory, {as: "Theory", foreignKey: "id", sourceKey: "topic_id"})
 }
 
-module.exports.Theory_topics = Theory_topics
+module.exports.Theory_topic = Theory_topic

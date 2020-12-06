@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize")
 const db = require("../config/database")
 const Theory = require("./theory")
-const Users = require("./users")
+const User = require("./user")
 
 const Theory_user_info = db.define("Theory_user_info", {
     id:{
@@ -26,7 +26,7 @@ const Theory_user_info = db.define("Theory_user_info", {
 })
 
 Theory_user_info.associate = (models) => {
-    Theory_user_info.belongsTo(models.Users, {as: "Users", foreignKey: "id", sourceKey: "user_id"})
+    Theory_user_info.belongsTo(models.User, {as: "User", foreignKey: "id", sourceKey: "user_id"})
 }
 Theory_user_info.associate = (models) => {
     Theory_user_info.belongsTo(models.Theory, {as: "Theory", foreignKey: "id", sourceKey: "theory_id"})
