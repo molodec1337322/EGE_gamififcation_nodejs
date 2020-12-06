@@ -1,6 +1,6 @@
 const express = require("express")
 const jwt_decode = require('jwt-decode')
-const {Comments_for_task} = require("../models/comments_for_task")
+const {Comments_for_task} = require("../models/comments_for_tasks")
 const {User} = require("../models/user")
 
 

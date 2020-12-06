@@ -11,18 +11,18 @@ const port = process.env.PORT || 5000
 
 const app = express()
 
-
+/*
 db.authenticate()
     .then(() => console.log("db connected!"))
     .catch(err => console.log("db connection failed!"))
+*/
 
-/*
 db.sync({force: true}).then(result=>{
     console.log(result);
     console.log("\n\n\nSynchronized!!!")
     })
 .catch(err=> console.log(err));
-*/
+
 app.use(passport.initialize())
 require("./middleware/passport")(passport)
 
